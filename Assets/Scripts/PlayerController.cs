@@ -14,28 +14,43 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-
         //Movement
         //TODO: could set up a dictionary of inputs or use delegates and callbacks
         //TODO: Change to using force for movement and rotation?
-   
-   
-        if (Input.GetButton("Horizontal Key")|| Input.GetButton("Horizontal Stick"))
+
+        /* Joystick Inputs */
+        if (Input.GetAxis("Horizontal Stick") != 0)
         {
-            transform.localPosition += Input.GetAxis("Horizontal Stick")*Input.GetAxis("Horizontal Key")*transform.right * Time.deltaTime * moveSpeed;
+            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Stick") * Time.deltaTime * moveSpeed, 0, 0);
         }
 
-        if (Input.GetButton("Vertical Key")|| Input.GetButton("Vertical Stick"))
+        if (Input.GetAxis("Vertical Stick") != 0)
         {
-            transform.localPosition += Input.GetAxis("Vertical Stick") * Input.GetAxis("Vertical Key") * transform.forward * Time.deltaTime * moveSpeed;
+            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Stick") * Time.deltaTime * moveSpeed);
         }
 
-        //Rotation    
-        if (Input.GetButton("Rotate Key")|| Input.GetButton("Rotate Stick"))
+        /* Rotation */
+        float rsh = Input.GetAxis("Right Horizontal Stick");
+        float rsv = Input.GetAxis("Right Vertical Stick");
+        //Don't always reset the angle to 0 if the stick goes dead - wait for the player to move the angle themselves.
+        if (rsh != 0 || rsv != 0)
         {
-            transform.Rotate(0, Input.GetAxis("Rotate Stick") * Input.GetAxis("Rotate Key")*Time.deltaTime * rotateSpeed, 0);
+            //Rotate around the y-axis
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(rsh, rsv) * Mathf.Rad2Deg, transform.eulerAngles.z);
         }
+
+        /* Key Inputs */
+        if (Input.GetButton("Horizontal Key"))
+        {
+            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Key") * Time.deltaTime * moveSpeed, 0, 0);
+        }
+
+        if (Input.GetButton("Vertical Key"))
+        {
+            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Key") * Time.deltaTime * moveSpeed);
+        }
+
+        
 
 
     }
