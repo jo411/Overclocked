@@ -13,19 +13,39 @@ public class Weapon : MonoBehaviour {
     [SerializeField]
     public float shootDelayTime = 0.2f;
 
-    public void FireBullet(float rightStickHorizontal, float rightStickVertical)
+    private float timeSinceShot = 0f;
+    private TimeScale timeScale;
+
+    public virtual void Start()
     {
-        if (canShoot)
+        timeScale = Utils.getTimeScale();
+    }
+
+    public virtual void Update()
+    {
+        if (!canShoot)
         {
-            Vector3 shootDirection = new Vector3(rightStickHorizontal, 0, rightStickVertical).normalized;
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<Bullet>().Fire(bulletSpeed, shootDirection);
-            canShoot = false;
-            Invoke("ShootDelay", shootDelayTime);
+            timeSinceShot += Time.deltaTime * timeScale.getScale();
+            if (timeSinceShot >= shootDelayTime)
+            {
+                canShoot = true;
+            }
         }
     }
 
-    public void ShootDelay()
+    public virtual void FireBullet()
+    {
+        if (canShoot)
+        {
+            Vector3 shootDirection = transform.forward.normalized;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<Bullet>().Fire(bulletSpeed, shootDirection);
+            canShoot = false;
+            timeSinceShot = 0f;
+        }
+    }
+
+    public virtual void ShootDelay()
     {
         canShoot = true;
     }

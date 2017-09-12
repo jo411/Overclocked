@@ -5,10 +5,15 @@ using UnityEngine;
 public class TimeScale : MonoBehaviour {
 
     private float scale = 1f;
+    [SerializeField]
+    private int baseIndex = 3;
+    [SerializeField]
+    private float[] scaleValues;
 
+    private int index;
 	// Use this for initialization
 	void Start () {
-		
+        index = baseIndex;
 	}
 	
 	// Update is called once per frame
@@ -23,29 +28,25 @@ public class TimeScale : MonoBehaviour {
 
     public void slowTime()
     {
-        if (scale > 0.125)
+        if (index > 0)
         {
-            scale /= 2;
+            index--;
         }
-        Debug.Log(scale);
+        scale = scaleValues[index];
     }
 
     public void accelerateTime()
     {
-        if (scale < 1)
+        if (index < scaleValues.Length)
         {
-            scale *= 2;
+            index++;
         }
-        else if (scale >= 1 && scale < 2)
-        {
-            scale += .25f;
-        }
-        Debug.Log(scale);
+        scale = scaleValues[index];
     }
 
     public void resetTime()
     {
-        scale = 1f;
-        Debug.Log(scale);
+        index = baseIndex;
+        scale = scaleValues[index];
     }
 }

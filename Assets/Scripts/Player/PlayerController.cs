@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
             //Fire each of the weapons in the direction the player is pointing
             foreach (Weapon wep in gameObject.GetComponentsInChildren<Weapon>())
             {
-                wep.FireBullet(rsh, rsv);
+                wep.FireBullet();
             }
         }
 
@@ -64,8 +64,7 @@ public class PlayerController : MonoBehaviour {
         {
             timeScale.slowTime();
         }
-
-        if (Input.GetButtonDown("Accelerate Time"))
+        else if (Input.GetButtonDown("Accelerate Time"))
         {
             timeScale.accelerateTime();
         }
