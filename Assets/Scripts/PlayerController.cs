@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour {
             //Shooting using a time delay
             if(canShoot)
             {
-                Vector3 shootDirection = new Vector3(rsh, rsv, 0).normalized;
+                Vector3 shootDirection = new Vector3(rsh, 0, rsv).normalized;
                 FireBullet(shootDirection);
                 canShoot = false;
                 Invoke("ShootDelay", shootDelayTime);
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 
     void FireBullet(Vector3 shootDirection)
     {
-        GameObject bullet = Instantiate(bulletPrefab, transform);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Fire(bulletSpeed, shootDirection);
     }
 
