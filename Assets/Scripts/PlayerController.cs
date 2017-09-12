@@ -9,9 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpSpeed = 200f;
     public GameObject bulletPrefab;
 
-    private bool canShoot = true;
-    private float bulletSpeed = 12f;
-    private float shootDelayTime = 0.2f;
+    
     // Use this for initialization
     void Start () {
 		
@@ -43,15 +41,11 @@ public class PlayerController : MonoBehaviour {
             //Rotate around the y-axis
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, Mathf.Atan2(rsh, rsv) * Mathf.Rad2Deg, transform.eulerAngles.z);
 
-            //Shooting using a time delay
-            if(canShoot)
+            //Fire each of the weapons in the direction the player is pointing
+            foreach (Weapon wep in gameObject.GetComponentsInChildren<Weapon>())
             {
-                Vector3 shootDirection = new Vector3(rsh, 0, rsv).normalized;
-                FireBullet(shootDirection);
-                canShoot = false;
-                Invoke("ShootDelay", shootDelayTime);
+                wep.FireBullet(rsh, rsv);
             }
-
         }
 
         /* Key Inputs */
@@ -65,16 +59,5 @@ public class PlayerController : MonoBehaviour {
             transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Key") * Time.deltaTime * moveSpeed);
         }
 
-    }
-
-    void FireBullet(Vector3 shootDirection)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().Fire(bulletSpeed, shootDirection);
-    }
-
-    void ShootDelay()
-    {
-        canShoot = true;
     }
 }

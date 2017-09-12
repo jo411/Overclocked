@@ -24,4 +24,18 @@ public class Bullet : MonoBehaviour
         moveSpeed = fireSpeed;
         direction = fireDirection;
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "DeadZone")
+        {
+            Destroy(this.gameObject);
+        }
+
+        else if (collision.transform.tag == "Enemy")
+        {
+            Destroy(collision.transform.gameObject);
+            Destroy(this.gameObject);
+        }
+    }
 }
