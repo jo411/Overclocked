@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour {
     public float rotateSpeed = 150f;
     public float jumpSpeed = 200f;
     public GameObject bulletPrefab;
+    public TimeScale timeScale;
 
     
     // Use this for initialization
     void Start () {
-		
+        timeScale = Utils.getTimeScale();
 	}
 	
 	// Update is called once per frame
@@ -57,6 +58,16 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButton("Vertical Key"))
         {
             transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Key") * Time.deltaTime * moveSpeed);
+        }
+
+        if (Input.GetButtonDown("Slow Time"))
+        {
+            timeScale.slowTime();
+        }
+
+        if (Input.GetButtonDown("Accelerate Time"))
+        {
+            timeScale.accelerateTime();
         }
 
     }

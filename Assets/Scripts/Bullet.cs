@@ -8,15 +8,18 @@ public class Bullet : MonoBehaviour
 
     private Vector3 direction;
 
+    private TimeScale timeScale;
+
     // Use this for initialization
     void Start()
     {
+        timeScale = Utils.getTimeScale();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * moveSpeed * Time.deltaTime);
+        transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);
     }
 
     public void Fire(float fireSpeed, Vector3 fireDirection)
