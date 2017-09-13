@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeBar : MonoBehaviour {
     public float barValue = 1000f;
+    public float scaleSpeed = 150f;
     public UnityEngine.UI.Slider timeBar;
 
     private TimeScale timeScale;
@@ -17,7 +18,7 @@ public class TimeBar : MonoBehaviour {
     void Update()
     { 
         // Gain variable bar filling based on scale
-        barValue += (timeScale.getScale() - 1) * 50 * Time.deltaTime;
+        barValue += ((timeScale.getScale() - 1) * scaleSpeed + barValue/20f) * Time.deltaTime;
 
         // Forces the time to stay within 0 - 1000
         if (barValue < 0) barValue = 0;

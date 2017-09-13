@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour {
     private float bulletSpeed = 12f;
     [SerializeField]
     public float shootDelayTime = 0.2f;
+    [SerializeField]
+    private bool shootDelayedByTimeScale = true;
 
     private float timeSinceShot = 0f;
     private TimeScale timeScale;
@@ -25,7 +27,14 @@ public class Weapon : MonoBehaviour {
     {
         if (!canShoot)
         {
-            timeSinceShot += Time.deltaTime * timeScale.getScale();
+            if (shootDelayedByTimeScale)
+            {
+                timeSinceShot += Time.deltaTime * timeScale.getScale();
+            }
+            else
+            {
+                timeSinceShot += Time.deltaTime;
+            }
             if (timeSinceShot >= shootDelayTime)
             {
                 canShoot = true;

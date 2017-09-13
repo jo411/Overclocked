@@ -37,7 +37,7 @@ public class TimeScale : MonoBehaviour {
 
     public void accelerateTime()
     {
-        if (index < scaleValues.Length)
+        if (index < scaleValues.Length - 1)
         {
             index++;
         }
