@@ -272,8 +272,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
-  bulletSpeed: 7
-  shootDelayTime: 0.2
+  bulletSpeed: 4
+  shootDelayTime: 0.3
+  shootDelayedByTimeScale: 1
 --- !u!114 &114217533091421988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,8 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
-  bulletSpeed: 7
-  shootDelayTime: 0.2
+  bulletSpeed: 4
+  shootDelayTime: 0.3
+  shootDelayedByTimeScale: 1
 --- !u!114 &114779579299815202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,8 +304,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
-  bulletSpeed: 7
-  shootDelayTime: 0.2
+  bulletSpeed: 4
+  shootDelayTime: 0.3
+  shootDelayedByTimeScale: 1
 --- !u!114 &114850327294304876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,10 +318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e2acf30bc61d14388870d630f1b159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 3.5
   timeScale: {fileID: 0}
-  changeDirTime: 5
-  rotateSpeed: 90
+  changeDirTime: 10
+  rotateSpeed: 45
 --- !u!114 &114998185733191776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,5 +335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
-  bulletSpeed: 7
-  shootDelayTime: 0.2
+  bulletSpeed: 4
+  shootDelayTime: 0.3
+  shootDelayedByTimeScale: 1

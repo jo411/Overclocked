@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
 
     private TimeScale timeScale;
 
+    [SerializeField]
+    private float damage = 200f;
+
     // Use this for initialization
     void Start()
     {
@@ -38,6 +41,12 @@ public class Bullet : MonoBehaviour
         else if (collision.transform.tag == "Enemy")
         {
             Destroy(collision.transform.gameObject);
+            Destroy(this.gameObject);
+        }
+        else if (collision.transform.tag == "Player")
+        {
+            PlayerController pc = collision.gameObject.GetComponentInChildren<PlayerController>();
+            pc.takeDamage(damage);
             Destroy(this.gameObject);
         }
     }

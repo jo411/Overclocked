@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpSpeed = 200f;
     public GameObject bulletPrefab;
     public TimeScale timeScale;
+    public TimeBar timeBar;
 
     
     // Use this for initialization
@@ -69,5 +70,10 @@ public class PlayerController : MonoBehaviour {
             timeScale.accelerateTime();
         }
 
+    }
+
+    public void takeDamage(float damage)
+    {
+        timeBar.DecrementTime(damage);
     }
 }
