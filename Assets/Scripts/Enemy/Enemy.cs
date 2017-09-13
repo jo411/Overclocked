@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour {
         
     }
 
+
+
     public virtual void Attack()
     {
         foreach (Weapon wep in gameObject.GetComponentsInChildren<Weapon>())
