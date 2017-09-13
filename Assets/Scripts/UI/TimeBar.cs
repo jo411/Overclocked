@@ -26,4 +26,10 @@ public class TimeBar : MonoBehaviour {
 
         timeBar.value = barValue;
     }
+
+    public void DecrementTime(float amount)
+    {
+        barValue -= amount;
+        if (barValue < 0) barValue = 0;
+    }
 }
