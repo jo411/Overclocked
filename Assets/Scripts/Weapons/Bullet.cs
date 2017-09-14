@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private float moveSpeed = 0f;
+    protected float moveSpeed = 0f;
 
-    private Vector3 direction;
+    protected Vector3 direction;
 
-    private TimeScale timeScale;
+    protected TimeScale timeScale;
 
     [SerializeField]
     private float damage = 200f;
@@ -22,13 +22,17 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);
+        move();   
     }
-
+    public virtual void move()
+    {
+        transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);  
+    }
     public void Fire(float fireSpeed, Vector3 fireDirection)
     {
         moveSpeed = fireSpeed;
         direction = fireDirection;
+        Debug.Log(fireDirection);
     }
 
     public void OnCollisionEnter(Collision collision)
