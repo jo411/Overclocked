@@ -20,7 +20,7 @@ public class SineBullet : Bullet {
     {
         transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);
                
-        Vector3 normal = (Quaternion.Euler(0, -45, 0) * direction).normalized;        
+        Vector3 normal = (Quaternion.Euler(0, 90, 0) * direction).normalized;        
         Vector3 shiftWork = new Vector3(shiftx*normal.x * moveSpeed * timeScale.getScale() * Time.deltaTime, 0, shiftx*normal.z * moveSpeed * timeScale.getScale() * Time.deltaTime);
         transform.position += shiftWork;       
 

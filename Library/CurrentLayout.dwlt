@@ -366,8 +366,8 @@ MonoBehaviour:
     height: 591
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 16270000e8fbffff
-    m_LastClickedID: -1048
+    m_SelectedIDs: 70fbffff
+    m_LastClickedID: -1168
     m_ExpandedIDs: 70fbffff1afcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -423,9 +423,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.65231013, y: 18.57889, z: -18.222551}
+    m_Target: {x: 6.7332773, y: 14.470972, z: -16.928045}
     speed: 2
-    m_Value: {x: -0.65231013, y: 18.57889, z: -18.222551}
+    m_Value: {x: 6.7332773, y: 14.470972, z: -16.928045}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -448,9 +448,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.4300783, y: 0.009478407, z: -0.0045164633, w: -0.9027305}
+    m_Target: {x: -0.43122074, y: -0.029765565, z: 0.014235, w: -0.901643}
     speed: 2
-    m_Value: {x: -0.4300783, y: 0.009478407, z: -0.0045164633, w: -0.9027305}
+    m_Value: {x: -0.43122074, y: -0.029765565, z: 0.014235, w: -0.901643}
   m_Size:
     m_Target: 1.4289418
     speed: 2
@@ -571,18 +571,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Bullets
+    - Assets/Scripts/Weapons
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/Bullets
+  - Assets/Scripts/Weapons
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Josh\School\Capstone\Game\Overclocked
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 40260000
-    m_LastClickedID: 9792
+    m_SelectedIDs: 66260000
+    m_LastClickedID: 9830
     m_ExpandedIDs: 0000000028260000302600005426000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
