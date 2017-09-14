@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 403
     height: 612
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -366,9 +366,9 @@ MonoBehaviour:
     height: 591
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 842aeeff
-    m_LastClickedID: -1168764
-    m_ExpandedIDs: c0fbffff1afcffff00000000
+    m_SelectedIDs: 16270000e8fbffff
+    m_LastClickedID: -1048
+    m_ExpandedIDs: 70fbffff1afcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -423,9 +423,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.1433243, y: 19.004297, z: -24.586699}
+    m_Target: {x: -0.65231013, y: 18.57889, z: -18.222551}
     speed: 2
-    m_Value: {x: -0.1433243, y: 19.004297, z: -24.586699}
+    m_Value: {x: -0.65231013, y: 18.57889, z: -18.222551}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -448,9 +448,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.36821, y: 0.009762294, z: -0.003866875, w: -0.9296834}
+    m_Target: {x: -0.4300783, y: 0.009478407, z: -0.0045164633, w: -0.9027305}
     speed: 2
-    m_Value: {x: -0.36821, y: 0.009762294, z: -0.003866875, w: -0.9296834}
+    m_Value: {x: -0.4300783, y: 0.009478407, z: -0.0045164633, w: -0.9027305}
   m_Size:
     m_Target: 1.4289418
     speed: 2
@@ -571,19 +571,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Enemy
+    - Assets/Prefabs/Bullets
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/Enemy
+  - Assets/Prefabs/Bullets
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\Josh\School\Capstone\Game\Overclocked
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: be830000
-    m_LastClickedID: 33726
-    m_ExpandedIDs: 00000000262600002e2600004e26000000ca9a3bffffff7f
+    m_SelectedIDs: 40260000
+    m_LastClickedID: 9792
+    m_ExpandedIDs: 0000000028260000302600005426000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -611,7 +611,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000262600004e260000
+    m_ExpandedIDs: 00000000282600003026000054260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

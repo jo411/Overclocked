@@ -110,8 +110,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 200
-  maxShift: 0.09
-  frequency: 0.008
+  bulletSpeedOverride: 6.96
+  amplitude: 1
+  frequency: 0.084
 --- !u!135 &135260607710404954
 SphereCollider:
   m_ObjectHideFlags: 1

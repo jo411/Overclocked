@@ -13,6 +13,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private float damage = 200f;
 
+    [Range(0.0f, 20f)]
+    public float bulletSpeedOverride=0f; //TODO: This is bad but it seemed better to have bullets have access to setting their own speeds by script
+
     // Use this for initialization
     void Start()
     {
@@ -30,6 +33,10 @@ public class Bullet : MonoBehaviour
     }
     public void Fire(float fireSpeed, Vector3 fireDirection)
     {
+        if(bulletSpeedOverride!=0)
+        {
+            fireSpeed = bulletSpeedOverride;
+        }
         moveSpeed = fireSpeed;
         direction = fireDirection;
         Debug.Log(fireDirection);
