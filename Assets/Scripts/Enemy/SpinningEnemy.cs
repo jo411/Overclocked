@@ -21,14 +21,14 @@ public class SpinningEnemy : Enemy {
 
     public override void Move()
     {
-        moveTime += Time.deltaTime * timeScale.getScale();
+        moveTime += Time.deltaTime * getTimeScale();
         if (moveTime >= changeDirTime)
         {
             moveTime = 0;
             changeDirection();
         }
-        transform.position += new Vector3(horizontalMove, 0, verticalMove) * timeScale.getScale() * Time.deltaTime;
-        transform.Rotate(new Vector3(0, rotateSpeed * timeScale.getScale() * Time.deltaTime, 0));
+        transform.position += new Vector3(horizontalMove, 0, verticalMove) * getTimeScale() * Time.deltaTime;
+        transform.Rotate(new Vector3(0, rotateSpeed * getTimeScale() * Time.deltaTime, 0));
     }
 
     public override void Attack()

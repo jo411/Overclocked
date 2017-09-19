@@ -10,11 +10,13 @@ public class Bullet : MonoBehaviour
 
     protected TimeScale timeScale;
 
+    public float personalTimeScale = 1f;
+
     [SerializeField]
     private float damage = 200f;
 
     [Range(0.0f, 20f)]
-    public float bulletSpeedOverride=0f; //TODO: This is bad but it seemed better to have bullets have access to setting their own speeds by script
+    public float bulletSpeedOverride=0f; //TODO: This is ugly but it seemed better to have bullets have access to setting their own speeds by script
 
     // Use this for initialization
     void Start()
@@ -29,7 +31,7 @@ public class Bullet : MonoBehaviour
     }
     public virtual void move()
     {
-        transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);  
+        transform.Translate(direction * moveSpeed * getTimeScale() * Time.deltaTime);  
     }
     public void Fire(float fireSpeed, Vector3 fireDirection)
     {
@@ -38,8 +40,7 @@ public class Bullet : MonoBehaviour
             fireSpeed = bulletSpeedOverride;
         }
         moveSpeed = fireSpeed;
-        direction = fireDirection;
-        Debug.Log(fireDirection);
+        direction = fireDirection; 
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -60,5 +61,14 @@ public class Bullet : MonoBehaviour
             pc.takeDamage(damage);
             Destroy(this.gameObject);
         }
+    }
+
+    protected float getTimeScale()
+    {
+        return timeScale.getScale() * personalTimeScale;
+    }
+    public void changeTimeScale(float mult)
+    {
+        personalTimeScale*= mult;
     }
 }

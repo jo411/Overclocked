@@ -18,11 +18,11 @@ public class SineBullet : Bullet {
    
     public override void move()
     {
-        transform.Translate(direction * moveSpeed * timeScale.getScale() * Time.deltaTime);
+        transform.Translate(direction * moveSpeed * getTimeScale() * Time.deltaTime);
                
         Vector3 normal = (Quaternion.Euler(0, 90, 0) * direction).normalized;        
-        Vector3 shiftWork = new Vector3(shiftx*normal.x * moveSpeed * timeScale.getScale() * Time.deltaTime, 0, shiftx*normal.z * moveSpeed * timeScale.getScale() * Time.deltaTime);
-        transform.position += shiftWork;       
+        Vector3 shift = new Vector3(shiftx*normal.x * moveSpeed * getTimeScale() * Time.deltaTime, 0, shiftx*normal.z * moveSpeed * getTimeScale() * Time.deltaTime);
+        transform.position += shift;       
 
         shiftx += frequency;
 

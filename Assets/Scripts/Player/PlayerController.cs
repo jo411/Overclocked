@@ -9,8 +9,9 @@ public class PlayerController : MonoBehaviour {
     public float jumpSpeed = 200f;
     public GameObject bulletPrefab;
     public TimeScale timeScale;
+    public float personalTimeScale = 1f;
     public TimeBar timeBar;
-
+   
     
     // Use this for initialization
     void Start () {
@@ -26,12 +27,12 @@ public class PlayerController : MonoBehaviour {
         /* Joystick Inputs */
         if (Input.GetAxis("Horizontal Stick") != 0)
         {
-            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Stick") * Time.deltaTime * moveSpeed, 0, 0);
+            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Stick") * Time.deltaTime * getTimeScale() * moveSpeed, 0, 0);
         }
 
         if (Input.GetAxis("Vertical Stick") != 0)
         {
-            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Stick") * Time.deltaTime * moveSpeed);
+            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Stick") * Time.deltaTime * getTimeScale() * moveSpeed);
         }
 
         /* Rotation */
@@ -53,12 +54,12 @@ public class PlayerController : MonoBehaviour {
         /* Key Inputs */
         if (Input.GetButton("Horizontal Key"))
         {
-            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Key") * Time.deltaTime * moveSpeed, 0, 0);
+            transform.localPosition += new Vector3(Input.GetAxis("Horizontal Key") * Time.deltaTime * getTimeScale() * moveSpeed, 0, 0);
         }
 
         if (Input.GetButton("Vertical Key"))
         {
-            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Key") * Time.deltaTime * moveSpeed);
+            transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Key") * Time.deltaTime * getTimeScale() * moveSpeed);
         }
 
         if (Input.GetButtonDown("Slow Time"))
@@ -70,6 +71,15 @@ public class PlayerController : MonoBehaviour {
             timeScale.accelerateTime();
         }
 
+    }
+    protected float getTimeScale()
+    {
+        //return timeScale.getScale() * personalTimeScale; //TODO: do we want the player to be slowed by their own time power
+        return personalTimeScale;
+    }
+    public void changeTimeScale(float mult)
+    {
+        personalTimeScale *= mult;
     }
 
     public void takeDamage(float damage)

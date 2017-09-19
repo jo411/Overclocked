@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour {
 
     public TimeScale timeScale;
 
+    public float personalTimeScale = 1f;
+
 	// Use this for initialization
 	public virtual void Start () {
         timeScale = Utils.getTimeScale();
@@ -35,5 +37,15 @@ public class Enemy : MonoBehaviour {
         {
             wep.FireBullet();
         }
+    }
+
+    protected float getTimeScale()
+    {      
+        return timeScale.getScale()*personalTimeScale;
+    }
+    public void changeTimeScale(float mult)
+    {
+       
+        personalTimeScale *= mult;
     }
 }

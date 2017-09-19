@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour {
 
     private bool canShoot = true;
 
+    public float personalTimeScale = 1f;
+
     [SerializeField]
     private float bulletSpeed = 12f;
     [SerializeField]
@@ -29,7 +31,7 @@ public class Weapon : MonoBehaviour {
         {
             if (shootDelayedByTimeScale)
             {
-                timeSinceShot += Time.deltaTime * timeScale.getScale();
+                timeSinceShot += Time.deltaTime * getTimeScale();
             }
             else
             {
@@ -53,7 +55,14 @@ public class Weapon : MonoBehaviour {
             timeSinceShot = 0f;
         }
     }
-
+    protected float getTimeScale()//TODO: not sure if weapons have colliders, maybe use send message to children when altering personal timescales
+    {
+        return timeScale.getScale() * personalTimeScale;
+    }
+    public void changeTimeScale(float mult)
+    {
+        personalTimeScale *= mult;
+    }
     public virtual void ShootDelay()
     {
         canShoot = true;

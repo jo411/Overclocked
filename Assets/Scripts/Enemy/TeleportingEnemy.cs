@@ -6,8 +6,7 @@ public class TeleportingEnemy : FollowEnemy {
 
   
     public float tpRadius = 1f;
-    public float tpDelay = 10f;
-
+    public float tpDelay = 10f;  
     private float tpTimer = 0f;
 
   
@@ -20,7 +19,7 @@ public class TeleportingEnemy : FollowEnemy {
 
     public override void Move()
     {
-        tpTimer += Time.deltaTime * timeScale.getScale();
+        tpTimer += Time.deltaTime * getTimeScale();
         if (tpTimer >= tpDelay)
         {
             tpTimer = 0;
@@ -28,7 +27,7 @@ public class TeleportingEnemy : FollowEnemy {
         }
 
         Vector3 distance = (target.transform.position - transform.position).normalized;
-        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(distance), rotateSpeed * timeScale.getScale() * Time.deltaTime);
+        Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(distance), rotateSpeed * getTimeScale() * Time.deltaTime);
         transform.rotation = rot;
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
