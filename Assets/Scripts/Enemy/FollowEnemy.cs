@@ -18,10 +18,15 @@ public class FollowEnemy : Enemy {
 
     public override void Move()
     {
-        Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * getTimeScale() * Time.deltaTime);
-        transform.position = new Vector3(movement.x, transform.position.y, movement.z);
+        Vector3 distance = (target.transform.position - transform.position);
 
-        Vector3 distance = (target.transform.position - transform.position).normalized;
+        if (distance.magnitude > 2f)
+        {
+            Vector3 movement = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * getTimeScale() * Time.deltaTime);
+            transform.position = new Vector3(movement.x, transform.position.y, movement.z);
+        }
+
+        distance = distance.normalized;
 
         Quaternion rot = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(distance), rotateSpeed * getTimeScale() * Time.deltaTime);
         transform.rotation = rot;
