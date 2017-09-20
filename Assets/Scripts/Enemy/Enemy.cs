@@ -69,4 +69,8 @@ public class Enemy : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
+    public bool isDead()
+    {
+        return health <= 0;
+    }
 }
