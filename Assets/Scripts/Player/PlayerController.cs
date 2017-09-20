@@ -94,5 +94,19 @@ public class PlayerController : MonoBehaviour {
     public void takeDamage(float damage)
     {
         timeBar.DecrementTime(damage);
+        //Disable hit box
+        if (timeBar.dead)
+        {
+            SetCollision(false);
+        }
+    }
+
+    public void SetCollision(bool enabled)
+    {
+        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = enabled;
+        }
     }
 }

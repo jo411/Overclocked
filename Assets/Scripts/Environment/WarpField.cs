@@ -33,12 +33,12 @@ public class WarpField : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Modifying");
+        //Debug.Log("Modifying");
         other.gameObject.SendMessage("changeTimeScale", warpFactor,SendMessageOptions.DontRequireReceiver);
     }
     public void OnTriggerExit(Collider other)
     {
-        Debug.Log("Reverting");
+        //Debug.Log("Reverting");
         other.gameObject.SendMessage("changeTimeScale", 1/warpFactor, SendMessageOptions.DontRequireReceiver);
     }
    
