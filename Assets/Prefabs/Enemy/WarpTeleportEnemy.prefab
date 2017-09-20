@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  maxHealth: 1000
   timeScale: {fileID: 0}
   personalTimeScale: 1
   rotateSpeed: 0

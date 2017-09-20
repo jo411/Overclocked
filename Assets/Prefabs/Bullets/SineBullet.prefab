@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114557618019994152}
   m_Layer: 8
   m_Name: SineBullet
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7869cb3937f425a44831026f84ef5b8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  personalTimeScale: 1
   damage: 200
   bulletSpeedOverride: 6.96
   amplitude: 1

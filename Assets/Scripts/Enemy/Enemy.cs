@@ -7,6 +7,10 @@ public class Enemy : MonoBehaviour {
     [SerializeField]
     public float moveSpeed = 4f;
 
+    [SerializeField]
+    public float maxHealth = 500f;
+    private float health;
+
     public TimeScale timeScale;
 
     public float personalTimeScale = 1f;
@@ -14,6 +18,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	public virtual void Start () {
         timeScale = Utils.getTimeScale();
+        health = maxHealth;
 	}
 	
 	// Update is called once per frame
@@ -48,4 +53,20 @@ public class Enemy : MonoBehaviour {
        
         personalTimeScale *= mult;
     }
+
+    public virtual void takeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0f)
+        {
+            deathSequence();
+        }
+    }
+
+    //Any on death actions here
+    public virtual void deathSequence()
+    {
+        Destroy(this.gameObject);
+    }
+
 }

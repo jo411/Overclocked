@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114875329200596316}
   m_Layer: 8
   m_Name: WarpBullet
-  m_TagString: Enemy
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warpFactor: 1
   warpRadius: 1
+  indicator: {fileID: 0}
 --- !u!135 &135260607710404954
 SphereCollider:
   m_ObjectHideFlags: 1

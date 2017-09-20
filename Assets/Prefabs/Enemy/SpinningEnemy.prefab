@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 4
   shootDelayTime: 0.3
   shootDelayedByTimeScale: 1
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 4
   shootDelayTime: 0.3
   shootDelayedByTimeScale: 1
@@ -304,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 4
   shootDelayTime: 0.3
   shootDelayedByTimeScale: 1
@@ -319,7 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
+  maxHealth: 1200
   timeScale: {fileID: 0}
+  personalTimeScale: 1
   changeDirTime: 10
   rotateSpeed: 45
 --- !u!114 &114998185733191776
@@ -335,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 4
   shootDelayTime: 0.3
   shootDelayedByTimeScale: 1

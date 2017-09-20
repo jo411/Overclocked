@@ -45,21 +45,25 @@ public class Bullet : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "DeadZone")
+        switch(collision.transform.tag)
         {
-            Destroy(this.gameObject);
-        }
-
-        else if (collision.transform.tag == "Enemy")
-        {
-            Destroy(collision.transform.gameObject);
-            Destroy(this.gameObject);
-        }
-        else if (collision.transform.tag == "Player")
-        {
-            PlayerController pc = collision.gameObject.GetComponentInChildren<PlayerController>();
-            pc.takeDamage(damage);
-            Destroy(this.gameObject);
+            case "DeadZone":
+                Destroy(this.gameObject);
+                break;
+            case "Enemy":
+                Enemy e = collision.gameObject.GetComponentInChildren<Enemy>();
+                e.takeDamage(damage);
+                Destroy(this.gameObject);
+                break;
+            case "Player":
+                PlayerController pc = collision.gameObject.GetComponentInChildren<PlayerController>();
+                pc.takeDamage(damage);
+                Destroy(this.gameObject);
+                break;
+            case "Bullet":
+                Destroy(this.gameObject);
+                Destroy(collision.gameObject);
+                break;
         }
     }
 
