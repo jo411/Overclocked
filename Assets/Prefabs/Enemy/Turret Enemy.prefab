@@ -53,9 +53,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444831496247624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.82, y: 0.83, z: -10.5}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.24, y: 0.682, z: -4.2999997}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_Children:
   - {fileID: 4683560165785660}
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3dafa2767c019d645b8485e1cea114d7, type: 2}
+  - {fileID: 2100000, guid: a4516becfeb92f548b355300291bce1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560754cdc31562e45875d57fc810652e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
+  bulletPrefab: {fileID: 1269758826948268, guid: 2b885156f20d3cf4fb209fdc7a8b8495,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 12
   shootDelayTime: 0.2
   shootDelayedByTimeScale: 1
@@ -168,5 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
+  maxHealth: 500
   timeScale: {fileID: 0}
+  personalTimeScale: 1
   rotateSpeed: 10

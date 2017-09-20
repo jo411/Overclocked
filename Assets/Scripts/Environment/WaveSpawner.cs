@@ -28,7 +28,7 @@ public class WaveSpawner : MonoBehaviour {
     {
         timeScale = Utils.getTimeScale();
         enemiesSpawned = 0;
-
+        enemyTracker = new Enemy[waveCount];
         if (!spawnAroundPlayer) source = this.gameObject;
     }
 
@@ -57,14 +57,6 @@ public class WaveSpawner : MonoBehaviour {
                     canSpawn = true;
                 }
             }
-
-            for(int i = 0; i < enemyTracker.Length; i++)
-            {
-                if(enemyTracker[i] != null) 
-                {
-                    if (enemyTracker[i].isDead()) enemyTracker[i] = null;
-                }
-            }
         }
         else
         {
@@ -78,7 +70,7 @@ public class WaveSpawner : MonoBehaviour {
 
     private bool isWaveDead()
     {
-        for(int i = 0; i < enemyTracker.Length; i++)
+        for (int i = 0; i < enemyTracker.Length; i++)
         {
             if (enemyTracker[i] != null) return false;
         }
@@ -92,6 +84,7 @@ public class WaveSpawner : MonoBehaviour {
             Vector2 randCircle = Random.insideUnitCircle;
             Vector3 spawnPos = source.transform.position + new Vector3(randCircle.x, 0, randCircle.y) * spawnDistance;
             GameObject enemy = Instantiate(spawnableEnemies[Random.Range(0, spawnableEnemies.Length)], spawnPos, Quaternion.identity);
+            enemyTracker[enemiesSpawned] = enemy.GetComponentInChildren<Enemy>();
             canSpawn = false;
             timeSinceSpawn = 0f;
             enemiesSpawned++;
