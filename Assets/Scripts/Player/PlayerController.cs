@@ -19,10 +19,18 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
+        if (!timeBar.dead)
+        {
+            readInput();
+        }
+
+    }
+
+    private void readInput()
+    {
         //Movement
-        //TODO: could set up a dictionary of inputs or use delegates and callbacks
-        //TODO: Change to using force for movement and rotation?
 
         /* Joystick Inputs */
         if (Input.GetAxis("Horizontal Stick") != 0)
@@ -70,13 +78,14 @@ public class PlayerController : MonoBehaviour {
         {
             timeScale.accelerateTime();
         }
-
     }
+
     protected float getTimeScale()
     {
         //return timeScale.getScale() * personalTimeScale; //TODO: do we want the player to be slowed by their own time power
         return personalTimeScale;
     }
+
     public void changeTimeScale(float mult)
     {
         personalTimeScale *= mult;

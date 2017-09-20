@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeBar : MonoBehaviour {
     public float barValue = 1000f;
     public float scaleSpeed = 150f;
+    public bool dead = false;
     public UnityEngine.UI.Slider timeBar;
 
     private TimeScale timeScale;
@@ -21,7 +22,7 @@ public class TimeBar : MonoBehaviour {
         barValue += ((timeScale.getScale() - 1) * scaleSpeed + barValue/20f) * Time.deltaTime;
 
         // Forces the time to stay within 0 - 1000
-        if (barValue < 0) barValue = 0;
+        if (barValue < 0) barValue = 0f;
         if (barValue > 1000) barValue = 1000;
 
         timeBar.value = barValue;
@@ -30,6 +31,11 @@ public class TimeBar : MonoBehaviour {
     public void DecrementTime(float amount)
     {
         barValue -= amount;
-        if (barValue < 0) barValue = 0;
+        if (barValue < 0)
+        {
+            barValue = 0;
+            // Death stuff here
+            dead = true;
+        }
     }
 }
