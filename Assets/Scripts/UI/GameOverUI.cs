@@ -81,4 +81,9 @@ public class GameOverUI : MonoBehaviour {
         hud.SetActive(false);
         timeScale.resetTime();
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }

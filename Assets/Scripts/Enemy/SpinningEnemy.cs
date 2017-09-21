@@ -9,14 +9,18 @@ public class SpinningEnemy : Enemy {
     private float changeDirTime = 5f;
 
     private float horizontalMove, verticalMove;
-
     [SerializeField]
     private float rotateSpeed = 1f;
+    [SerializeField]
+    private int maxDirections = 5;
+
+    [SerializeField]
+    private LayerMask deadZoneMask;
 
     public override void Start()
     {
         base.Start();
-        changeDirection();
+        changeDirection(0);
     }
 
     public override void Move()
@@ -25,7 +29,7 @@ public class SpinningEnemy : Enemy {
         if (moveTime >= changeDirTime)
         {
             moveTime = 0;
-            changeDirection();
+            changeDirection(0);
         }
         transform.position += new Vector3(horizontalMove, 0, verticalMove) * getTimeScale() * Time.deltaTime;
         transform.Rotate(new Vector3(0, rotateSpeed * getTimeScale() * Time.deltaTime, 0));
@@ -39,18 +43,32 @@ public class SpinningEnemy : Enemy {
         }
     }
 
-    private void changeDirection()
+    private void changeDirection(int layer)
     {
         //Randomly pick a new direction to go to
-        horizontalMove = Random.Range(0, 1);
+        horizontalMove = Random.Range(0.0f, 1.0f);
         verticalMove = 1 - horizontalMove;
-        if (Random.Range(-1, 1) >= 0)
+        if (Random.Range(0, 1) > 0)
         {
             horizontalMove *= -1;
         }
-        if (Random.Range(-1, 1) >= 0)
+        if (Random.Range(0, 1) > 0)
         {
             verticalMove *= -1;
         }
+        float dist = Mathf.Sqrt(Mathf.Pow(horizontalMove * changeDirTime, 2) + Mathf.Pow(verticalMove * changeDirTime, 2));
+        if (Physics.Raycast(transform.position, new Vector3(horizontalMove, 0, verticalMove), dist, deadZoneMask.value))
+        {
+            //We will be running into a dead zone! Pick another direction
+            //TODO: Make this better than sitting around
+            Debug.Log("Bad direction.");
+            horizontalMove = 0f;
+            verticalMove = 0f;
+        }
+        else
+        {
+            Debug.Log("Direction: " + horizontalMove + ", " + verticalMove);
+        }
     }
+
 }
