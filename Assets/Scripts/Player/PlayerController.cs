@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         timeScale = Utils.getTimeScale();
+        timeScale.addListener(gameObject);
         originPoint = transform.position;
     }
 

@@ -20,16 +20,19 @@ public class TimeScale : MonoBehaviour {
     [SerializeField]
     private AudioSource soundEffects;
 
+    private List<GameObject> listeners = new List<GameObject>();
 
     private int index;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         index = baseIndex;
         if (music == null)
         {
             music = GameObject.Find("Music").GetComponentInChildren<AudioSource>();
         }
         soundEffects = GetComponentInChildren<AudioSource>();
+        //listeners = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +55,7 @@ public class TimeScale : MonoBehaviour {
         scale = scaleValues[index];
         music.pitch = musicScaleValues[index];
         music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        sendMessageToListeners("OnSlowTime");
     }
 
     public void accelerateTime()
@@ -64,6 +68,7 @@ public class TimeScale : MonoBehaviour {
         scale = scaleValues[index];
         music.pitch = musicScaleValues[index];
         music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        sendMessageToListeners("OnAccelerateTime");
     }
 
     public void resetTime()
@@ -72,5 +77,22 @@ public class TimeScale : MonoBehaviour {
         scale = scaleValues[index];
         music.pitch = musicScaleValues[index];
         music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        sendMessageToListeners("OnResetTime");
+    }
+
+    public void addListener(GameObject listener)
+    {
+        listeners.Add(listener);
+    }
+
+    private void sendMessageToListeners(string message)
+    {
+        foreach (GameObject listener in listeners)
+        {
+            if (listener != null)
+            {
+                listener.BroadcastMessage(message);
+            }
+        }
     }
 }

@@ -2707,6 +2707,22 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 439500501}
   m_Script: {fileID: 11500000, guid: 9d024e994db02534b8934739574295a7, type: 3}
+--- !u!114 &1390565641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1390565634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c18ce4130a6b384a84a632f58bb8d1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shadowPrefab: {fileID: 1722664523106950, guid: f1d7e5c0a01c62a43a8a3a927cc3c0f8,
+    type: 2}
+  dropRateMultiplier: 1
+  obeyTimescale: 1
+  timeScale: {fileID: 0}
 --- !u!1 &1414218698
 GameObject:
   m_ObjectHideFlags: 0
