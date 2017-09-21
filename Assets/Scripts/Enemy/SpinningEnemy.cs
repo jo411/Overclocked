@@ -45,6 +45,10 @@ public class SpinningEnemy : Enemy {
 
     private void changeDirection(int layer)
     {
+        //BANDAID - These enemies are buggy, so we're choosing not to move them for the time being!
+        horizontalMove = 0f;
+        verticalMove = 0f;
+        return;
         //Randomly pick a new direction to go to
         horizontalMove = Random.Range(0.0f, 1.0f);
         verticalMove = 1 - horizontalMove;

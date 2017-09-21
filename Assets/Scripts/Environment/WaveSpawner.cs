@@ -63,6 +63,8 @@ public class WaveSpawner : MonoBehaviour {
             if(isWaveDead())
             {
                 enemiesSpawned = 0;
+                waveCount += 2;
+                enemyTracker = new Enemy[waveCount];
                 canSpawn = false;
             }
         }
