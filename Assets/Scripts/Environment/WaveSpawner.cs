@@ -95,4 +95,20 @@ public class WaveSpawner : MonoBehaviour {
     {
         return timeScale.getScale();
     }
+
+    // Delete all enemies, reset bullets, etc.
+    public void resetStage()
+    {
+        for (int i = 0; i < enemyTracker.Length; i++)
+        {
+            if (enemyTracker[i] != null)
+            {
+                Destroy(enemyTracker[i].gameObject);
+            }
+        }
+        foreach (Bullet b in GameObject.FindObjectsOfType<Bullet>())
+        {
+            Destroy(b.gameObject);
+        }
+    }
 }

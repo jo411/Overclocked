@@ -10,6 +10,7 @@ public class GameOverUI : MonoBehaviour {
     private Color overlayColor;
     private float flashScale;
 
+    public TimeScale timeScale;
     public GameObject hud;
     public float flashSpeed = .5f;
     public Image overlay;
@@ -18,7 +19,7 @@ public class GameOverUI : MonoBehaviour {
 	void Start ()
     {
         overlayColor = overlay.color;
-        Debug.Log(overlayColor);
+        timeScale = Utils.getTimeScale();
         flashScale = 1f / flashSpeed / 60f;
         if (hud == null)
         {
@@ -69,6 +70,7 @@ public class GameOverUI : MonoBehaviour {
         state = 0;
         this.gameObject.SetActive(false);
         hud.SetActive(true);
+        timeScale.resetTime();
     }
 
     public void endGame()
@@ -77,5 +79,6 @@ public class GameOverUI : MonoBehaviour {
         state = 0;
         this.gameObject.SetActive(true);
         hud.SetActive(false);
+        timeScale.resetTime();
     }
 }

@@ -13,6 +13,13 @@ public class TimeScale : MonoBehaviour {
     private float[] musicScaleValues;
     [SerializeField]
     private AudioSource music;
+    [SerializeField]
+    private AudioClip slowClip;
+    [SerializeField]
+    private AudioClip accelerateClip;
+    [SerializeField]
+    private AudioSource soundEffects;
+
 
     private int index;
 	// Use this for initialization
@@ -20,8 +27,9 @@ public class TimeScale : MonoBehaviour {
         index = baseIndex;
         if (music == null)
         {
-            music = GetComponentInChildren<AudioSource>();
+            music = GameObject.Find("Music").GetComponentInChildren<AudioSource>();
         }
+        soundEffects = GetComponentInChildren<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -39,6 +47,7 @@ public class TimeScale : MonoBehaviour {
         if (index > 0)
         {
             index--;
+            soundEffects.PlayOneShot(slowClip);
         }
         scale = scaleValues[index];
         music.pitch = musicScaleValues[index];
@@ -50,6 +59,7 @@ public class TimeScale : MonoBehaviour {
         if (index < scaleValues.Length - 1)
         {
             index++;
+            soundEffects.PlayOneShot(accelerateClip);
         }
         scale = scaleValues[index];
         music.pitch = musicScaleValues[index];

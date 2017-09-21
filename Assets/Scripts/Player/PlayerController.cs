@@ -11,15 +11,17 @@ public class PlayerController : MonoBehaviour {
     public TimeScale timeScale;
     public float personalTimeScale = 1f;
     public TimeBar timeBar;
-   
-    
+
+    private Vector3 originPoint;
+
     // Use this for initialization
-    void Start () {
+    void Start() {
         timeScale = Utils.getTimeScale();
-	}
-	
-	// Update is called once per frame
-	void Update ()
+        originPoint = transform.position;
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         if (!timeBar.dead)
         {
@@ -108,5 +110,12 @@ public class PlayerController : MonoBehaviour {
         {
             c.enabled = enabled;
         }
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = originPoint;
+        SetCollision(true);
+        personalTimeScale = 1f;
     }
 }
