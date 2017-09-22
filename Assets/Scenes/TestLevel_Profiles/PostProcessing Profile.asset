@@ -73,10 +73,10 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   shutterAngle:
-    overrideState: 1
-    value: 0
+    overrideState: 0
+    value: 360
   sampleCount:
-    overrideState: 1
+    overrideState: 0
     value: 32
 --- !u!114 &114474915137236216
 MonoBehaviour:
