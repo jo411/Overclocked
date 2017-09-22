@@ -26,12 +26,16 @@ public class DropShadows : MonoBehaviour {
         SpawnShadows();
     }
 
+    public void OnResetTime()
+    {
+        CancelInvoke();
+    }
+
     public void SpawnShadows()
     {
         CancelInvoke();
         if (timeScale.getScale() < 1f)
         {
-            Debug.Log("Beginning to spawn shadows...");
             InvokeRepeating("DropShadow", timeScale.getScale() * dropRateMultiplier, timeScale.getScale() * dropRateMultiplier);
         }
     }
