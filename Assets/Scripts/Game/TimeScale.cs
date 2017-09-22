@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class TimeScale : MonoBehaviour {
 
+    public float transitionTime = 1f;
+
+    private float fromPitch = 1f, targetPitch = 1f;
+    private float fromGroupPitch = 1f, targetGroupPitch = 1f;
+    private float pitchLerp = 0f, groupPitchLerp = 0f;
+
     private float scale = 1f;
     [SerializeField]
     private int baseIndex = 3;
@@ -32,12 +38,23 @@ public class TimeScale : MonoBehaviour {
             music = GameObject.Find("Music").GetComponentInChildren<AudioSource>();
         }
         soundEffects = GetComponentInChildren<AudioSource>();
-        //listeners = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+	    if (music.pitch != targetPitch)
+        {
+            pitchLerp += Time.deltaTime / transitionTime;
+            music.pitch = Mathf.Lerp(fromPitch, targetPitch, pitchLerp);
+        }
+        float groupPitch;
+        music.outputAudioMixerGroup.audioMixer.GetFloat("MusicPitchShift", out groupPitch);
+        if (groupPitch != targetGroupPitch)
+        {
+            groupPitchLerp += Time.deltaTime / transitionTime;
+            music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", Mathf.Lerp(fromGroupPitch, targetGroupPitch, groupPitchLerp));
+        }
 	}
 
     public float getScale()
@@ -50,11 +67,10 @@ public class TimeScale : MonoBehaviour {
         if (index > 0)
         {
             index--;
-            soundEffects.PlayOneShot(slowClip);
+            //soundEffects.PlayOneShot(slowClip);
         }
         scale = scaleValues[index];
-        music.pitch = musicScaleValues[index];
-        music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        updatePitch();
         sendMessageToListeners("OnSlowTime");
     }
 
@@ -63,11 +79,10 @@ public class TimeScale : MonoBehaviour {
         if (index < scaleValues.Length - 1)
         {
             index++;
-            soundEffects.PlayOneShot(accelerateClip);
+            //soundEffects.PlayOneShot(accelerateClip);
         }
         scale = scaleValues[index];
-        music.pitch = musicScaleValues[index];
-        music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        updatePitch();
         sendMessageToListeners("OnAccelerateTime");
     }
 
@@ -75,8 +90,7 @@ public class TimeScale : MonoBehaviour {
     {
         index = baseIndex;
         scale = scaleValues[index];
-        music.pitch = musicScaleValues[index];
-        music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        updatePitch();
         sendMessageToListeners("OnResetTime");
     }
 
@@ -94,5 +108,19 @@ public class TimeScale : MonoBehaviour {
                 listener.BroadcastMessage(message);
             }
         }
+    }
+
+    private void updatePitch()
+    {
+        //music.pitch = musicScaleValues[index];
+        //music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
+        //Reset lerp variables
+        pitchLerp = 0f;
+        groupPitchLerp = 0f;
+        //Reset from and to values
+        fromPitch = music.pitch;
+        targetPitch = musicScaleValues[index];
+        music.outputAudioMixerGroup.audioMixer.GetFloat("MusicPitchShift", out fromGroupPitch);
+        targetGroupPitch = musicScaleValues[6 - index];
     }
 }
