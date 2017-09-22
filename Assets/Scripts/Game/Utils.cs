@@ -14,4 +14,12 @@ public static class Utils {
         }
         return null;
     }
+
+    public static void setCollision(GameObject gameObject, bool state)
+    {
+        foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+        {
+            c.enabled = state;
+        }
+    }
 }

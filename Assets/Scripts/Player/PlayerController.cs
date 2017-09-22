@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour {
         {
             readInput();
         }
-
     }
 
     private void readInput()
@@ -100,23 +99,14 @@ public class PlayerController : MonoBehaviour {
         //Disable hit box
         if (timeBar.dead)
         {
-            SetCollision(false);
-        }
-    }
-
-    public void SetCollision(bool enabled)
-    {
-        Collider[] colliders = gameObject.GetComponentsInChildren<Collider>();
-        foreach (Collider c in colliders)
-        {
-            c.enabled = enabled;
+            Utils.setCollision(this.gameObject, false);
         }
     }
 
     public void ResetPlayer()
     {
         transform.position = originPoint;
-        SetCollision(true);
+        Utils.setCollision(this.gameObject, true);
         personalTimeScale = 1f;
     }
 }

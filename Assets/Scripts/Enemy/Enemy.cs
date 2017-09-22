@@ -25,7 +25,9 @@ public class Enemy : MonoBehaviour {
         health = maxHealth;
         rend = GetComponentInChildren<Renderer>();
         color = rend.material.color;
-	}
+        health = 0f;
+        StartCoroutine(Spawn());
+    }
 	
 	// Update is called once per frame
 	public virtual void Update ()
@@ -36,6 +38,11 @@ public class Enemy : MonoBehaviour {
             Attack();
         }
 	}
+
+    //public virtual void OnEnable()
+    //{
+        
+    //}
 
     /* Leaving this field blank... */
     public virtual void Move()
@@ -78,11 +85,8 @@ public class Enemy : MonoBehaviour {
     public virtual void deathSequence()
     {
         //Disable collision
-        foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
-        {
-            c.enabled = false;
-        }
-        StartCoroutine(Fade());
+        Utils.setCollision(this.gameObject, false);
+        StartCoroutine(FadeOut());
     }
 
     public bool isDead()
@@ -90,9 +94,9 @@ public class Enemy : MonoBehaviour {
         return health <= 0;
     }
 
-    public IEnumerator Fade()
+    public IEnumerator FadeOut()
     {
-        for (float f = 1f; f >= 0f; f-= .04f)
+        for (float f = 1f; f >= 0f; f-= .04f * timeScale.getScale())
         {
             Color c = rend.material.color;
             c.a = f;
@@ -100,6 +104,20 @@ public class Enemy : MonoBehaviour {
             yield return new WaitForFixedUpdate();
         }
         Destroy(this.gameObject);
+    }
+
+    public IEnumerator Spawn()
+    {
+        Color c = rend.material.color;
+        for (float f = 0f; f < 1f; f += .04f * timeScale.getScale())
+        {
+            c.a = f;
+            rend.material.color = c;
+            yield return new WaitForFixedUpdate();
+        }
+        c.a = 1f;
+        rend.material.color = c;
+        health = maxHealth;
     }
 
     public IEnumerator DamageFeedback()
