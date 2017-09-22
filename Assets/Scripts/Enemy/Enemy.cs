@@ -30,14 +30,17 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update ()
     {
-        Move();
-        Attack();
+        if (health > 0)
+        {
+            Move();
+            Attack();
+        }
 	}
 
     /* Leaving this field blank... */
     public virtual void Move()
     {
-        
+
     }
 
     public virtual void Attack()
@@ -74,12 +77,29 @@ public class Enemy : MonoBehaviour {
     //Any on death actions here
     public virtual void deathSequence()
     {
-        Destroy(this.gameObject);
+        //Disable collision
+        foreach (Collider c in gameObject.GetComponentsInChildren<Collider>())
+        {
+            c.enabled = false;
+        }
+        StartCoroutine(Fade());
     }
 
     public bool isDead()
     {
         return health <= 0;
+    }
+
+    public IEnumerator Fade()
+    {
+        for (float f = 1f; f >= 0f; f-= .04f)
+        {
+            Color c = rend.material.color;
+            c.a = f;
+            rend.material.color = c;
+            yield return new WaitForFixedUpdate();
+        }
+        Destroy(this.gameObject);
     }
 
     public IEnumerator DamageFeedback()
