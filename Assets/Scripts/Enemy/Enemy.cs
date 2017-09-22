@@ -11,6 +11,10 @@ public class Enemy : MonoBehaviour {
     public float maxHealth = 500f;
     private float health;
 
+    private Renderer rend;
+    private Color color;
+    public float colorFlashTime = .2f;
+
     public TimeScale timeScale;
 
     public float personalTimeScale = 1f;
@@ -19,6 +23,8 @@ public class Enemy : MonoBehaviour {
 	public virtual void Start () {
         timeScale = Utils.getTimeScale();
         health = maxHealth;
+        rend = GetComponentInChildren<Renderer>();
+        color = rend.material.color;
 	}
 	
 	// Update is called once per frame
@@ -33,8 +39,6 @@ public class Enemy : MonoBehaviour {
     {
         
     }
-
-
 
     public virtual void Attack()
     {
@@ -61,6 +65,10 @@ public class Enemy : MonoBehaviour {
         {
             deathSequence();
         }
+        else
+        {
+            StartCoroutine(DamageFeedback());
+        }
     }
 
     //Any on death actions here
@@ -72,5 +80,12 @@ public class Enemy : MonoBehaviour {
     public bool isDead()
     {
         return health <= 0;
+    }
+
+    public IEnumerator DamageFeedback()
+    {
+        rend.material.color = new Color(1f, 0f, 0f);
+        yield return new WaitForSeconds(colorFlashTime);
+        rend.material.color = color;
     }
 }

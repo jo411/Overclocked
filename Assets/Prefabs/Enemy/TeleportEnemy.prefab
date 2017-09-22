@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   maxHealth: 500
+  colorFlashTime: 0.2
   timeScale: {fileID: 0}
   personalTimeScale: 1
   rotateSpeed: 3

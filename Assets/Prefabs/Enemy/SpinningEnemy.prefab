@@ -323,10 +323,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3.5
   maxHealth: 1200
+  colorFlashTime: 0.2
   timeScale: {fileID: 0}
   personalTimeScale: 1
   changeDirTime: 10
   rotateSpeed: 45
+  maxDirections: 5
+  deadZoneMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &114998185733191776
 MonoBehaviour:
   m_ObjectHideFlags: 1
