@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour {
         rend = GetComponentInChildren<Renderer>();
         color = rend.material.color;
         health = 0f;
-        StartCoroutine(Spawn());
+        StartCoroutine(FadeIn());
     }
 	
 	// Update is called once per frame
@@ -39,11 +39,6 @@ public class Enemy : MonoBehaviour {
         }
 	}
 
-    //public virtual void OnEnable()
-    //{
-        
-    //}
-
     /* Leaving this field blank... */
     public virtual void Move()
     {
@@ -54,7 +49,7 @@ public class Enemy : MonoBehaviour {
     {
         foreach (Weapon wep in gameObject.GetComponentsInChildren<Weapon>())
         {
-            wep.FireBullet();
+                  wep.FireBullet();
         }
     }
 
@@ -106,7 +101,7 @@ public class Enemy : MonoBehaviour {
         Destroy(this.gameObject);
     }
 
-    public IEnumerator Spawn()
+    public IEnumerator FadeIn()
     {
         Color c = rend.material.color;
         for (float f = 0f; f < 1f; f += .04f * timeScale.getScale())
