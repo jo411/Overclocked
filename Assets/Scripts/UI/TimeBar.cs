@@ -47,6 +47,15 @@ public class TimeBar : MonoBehaviour {
         }
     }
 
+    public void IncrementTime(float amount)
+    {
+        barValue += amount;
+        if (barValue >= 1000f)
+        {
+            barValue = 1000f;
+        }
+    }
+
     public void Reset()
     {
         barValue = timeBar.maxValue;
