@@ -17,6 +17,8 @@ public class WarpField : MonoBehaviour
         indicator = Instantiate(indicator,gameObject.transform);
         indicator.transform.position = gameObject.transform.position;
 
+        insideField = new HashSet<GameObject>();
+
         field = gameObject.AddComponent<SphereCollider>();
         field.isTrigger = true;
         field.radius = warpRadius;
