@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 1444831496247624, guid: c1c946488ff79824c988c30eed5d255f, type: 2}
   - {fileID: 1444831496247624, guid: 62cae7bf058b9654fad65cbf06616299, type: 2}
   - {fileID: 1444831496247624, guid: cb6ec9013a00a5446a514d8851c67125, type: 2}
+  - {fileID: 1444831496247624, guid: 9d9a96de9dd51e44d814b1e941086a78, type: 2}
   waveCount: 5
   source: {fileID: 0}
   spawnDistance: 10

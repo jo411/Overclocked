@@ -19,9 +19,9 @@ public class Bullet : MonoBehaviour
     public float bulletSpeedOverride=0f; //TODO: This is ugly but it seemed better to have bullets have access to setting their own speeds by script
 
     // Use this for initialization
-    void Start()
+    protected void Start()
     {
-        timeScale = Utils.getTimeScale();
+        timeScale = Utils.getTimeScale();        
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
     }
     public virtual void move()
     {
-        transform.Translate(direction * moveSpeed * getTimeScale() * Time.deltaTime);  
+        transform.Translate(direction * moveSpeed * getTimeScale() * Time.deltaTime);       
     }
     public void Fire(float fireSpeed, Vector3 fireDirection)
     {
