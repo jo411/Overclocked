@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpAnimation : MonoBehaviour {
-    public float height = 1f;
-    public float moveSpeed = 3f;
-    public float rotateSpeed = 50f;
+    public float height = .5f;
+    public float moveSpeed = .25f;
+    public float rotateSpeed = 25f;
     public TimeScale timeScale;
 
     Vector3 startPosition;

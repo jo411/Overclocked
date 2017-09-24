@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23366169347874954}
   - component: {fileID: 54824450391204244}
   - component: {fileID: 114998969755051020}
+  - component: {fileID: 114618897099568518}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444831496247624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.642361, y: 0.289, z: 5.89613}
+  m_LocalPosition: {x: -7.2115045, y: 0.41, z: -7.55}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4683560165785660}
@@ -153,9 +154,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269758826948268, guid: 36027286e9606dd45a4cd0525768d195,
     type: 2}
+  personalTimeScale: 1
   bulletSpeed: 12
   shootDelayTime: 0.2
   shootDelayedByTimeScale: 1
+--- !u!114 &114618897099568518
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444831496247624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups: []
 --- !u!114 &114998969755051020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,4 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  maxHealth: 500
+  colorFlashTime: 0.2
   timeScale: {fileID: 0}
+  personalTimeScale: 1

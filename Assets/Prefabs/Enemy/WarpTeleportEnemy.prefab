@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 54824450391204244}
   - component: {fileID: 114409637713076312}
   - component: {fileID: 114281101155488112}
+  - component: {fileID: 114417563647392398}
+  - component: {fileID: 114364883583084436}
   m_Layer: 8
   m_Name: WarpTeleportEnemy
   m_TagString: Enemy
@@ -55,7 +57,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444831496247624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.02, y: 0.222, z: -10.7}
+  m_LocalPosition: {x: -3.5977561, y: 1.6283927e-16, z: -7.333629}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_Children:
   - {fileID: 4683560165785660}
@@ -155,6 +157,18 @@ MonoBehaviour:
   warpFactor: 0.5
   warpRadius: 4
   indicator: {fileID: 1754497770474878, guid: a8e834937ba137044a5ddb54a8260b80, type: 2}
+--- !u!114 &114364883583084436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444831496247624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups: []
 --- !u!114 &114390136310840526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,3 +205,15 @@ MonoBehaviour:
   rotateSpeed: 0
   tpRadius: 8
   tpDelay: 3
+--- !u!114 &114417563647392398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444831496247624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups: []

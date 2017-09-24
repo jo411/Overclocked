@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23366169347874954}
   - component: {fileID: 54824450391204244}
   - component: {fileID: 114946312385776328}
+  - component: {fileID: 114106205025402022}
   m_Layer: 8
   m_Name: FollowEnemy
   m_TagString: Enemy
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1444831496247624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.740627, y: 0.20199996, z: 16.907923}
+  m_LocalPosition: {x: -6.2915444, y: 1.6235157e-16, z: -7.3116646}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_Children:
   - {fileID: 4683560165785660}
@@ -140,6 +141,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114106205025402022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1444831496247624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups: []
 --- !u!114 &114390136310840526
 MonoBehaviour:
   m_ObjectHideFlags: 1

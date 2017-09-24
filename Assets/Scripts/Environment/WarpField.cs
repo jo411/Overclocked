@@ -28,12 +28,16 @@ public class WarpField : MonoBehaviour
         
     }
 
-    void onDestroy()
+    void OnDestroy()
     {
         //cleanup remaining objects inside field
         foreach(GameObject current in insideField)
         {
-            sendScaleMessage(current, 1 / warpFactor);
+            if(current!=null)//bullets still exist in the field
+            {
+                sendScaleMessage(current, 1 / warpFactor);
+            }
+            
         }
     }
     // Update is called once per frame
