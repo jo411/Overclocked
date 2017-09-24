@@ -7,6 +7,7 @@ public class WarpField : MonoBehaviour
     private float[] factors = new float[] {.125f,.25f,.5f,1f,2f };
     public float warpFactor = 1f;
     public float warpRadius = 1f;//this should be a power of 2 for float reasons
+    HashSet<GameObject> insideField;//which objects are currently inside the collider in case it gets destroyed.
 
     public GameObject indicator;
     private SphereCollider field;
@@ -25,6 +26,14 @@ public class WarpField : MonoBehaviour
         
     }
 
+    void onDestroy()
+    {
+        //cleanup remaining objects inside field
+        foreach(GameObject current in insideField)
+        {
+            sendScaleMessage(current, 1 / warpFactor);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -33,13 +42,19 @@ public class WarpField : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Modifying");
-        other.gameObject.SendMessage("changeTimeScale", warpFactor,SendMessageOptions.DontRequireReceiver);
+        //Debug.Log("Modifying"); 
+        insideField.Add(other.gameObject);
+        sendScaleMessage(other.gameObject, warpFactor);
     }
     public void OnTriggerExit(Collider other)
     {
-        //Debug.Log("Reverting");
-        other.gameObject.SendMessage("changeTimeScale", 1/warpFactor, SendMessageOptions.DontRequireReceiver);
+        //Debug.Log("Reverting");  
+        insideField.Remove(other.gameObject);
+        sendScaleMessage(other.gameObject, 1/warpFactor);
     }
    
+    private void sendScaleMessage(GameObject other,float scaleMult)
+    {
+        other.SendMessage("changeTimeScale", scaleMult, SendMessageOptions.DontRequireReceiver);
+    }
 }
