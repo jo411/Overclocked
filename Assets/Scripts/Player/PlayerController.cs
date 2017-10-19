@@ -13,12 +13,14 @@ public class PlayerController : MonoBehaviour {
     public TimeBar timeBar;
 
     private Vector3 originPoint;
+    private ScytheAttack scytheAttack;
 
     // Use this for initialization
     void Start() {
         timeScale = Utils.getTimeScale();
         timeScale.addListener(gameObject);
         originPoint = transform.position;
+        scytheAttack = GetComponentInChildren<ScytheAttack>();
     }
 
     // Update is called once per frame
@@ -43,6 +45,11 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxis("Vertical Stick") != 0)
         {
             transform.localPosition += new Vector3(0, 0, Input.GetAxis("Vertical Stick") * Time.deltaTime * getTimeScale() * moveSpeed);
+        }
+
+        if (Input.GetButtonDown("Melee"))
+        {
+            scytheAttack.Attack();
         }
 
         /* Rotation */
