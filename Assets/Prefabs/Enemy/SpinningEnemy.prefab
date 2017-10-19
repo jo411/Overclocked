@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 23842545108707270}
   - component: {fileID: 54008253580303742}
   - component: {fileID: 114850327294304876}
+  - component: {fileID: 114705525455497418}
   m_Layer: 8
   m_Name: SpinningEnemy
   m_TagString: Enemy
@@ -293,6 +294,21 @@ MonoBehaviour:
   bulletSpeed: 4
   shootDelayTime: 0.3
   shootDelayedByTimeScale: 1
+--- !u!114 &114705525455497418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1732890811440082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - prefab: {fileID: 1736514985979124, guid: adf625e944a0c2546af5805b0f1871ec, type: 2}
+    dropChance: 0.3
+  disableDrops: 0
 --- !u!114 &114779579299815202
 MonoBehaviour:
   m_ObjectHideFlags: 1

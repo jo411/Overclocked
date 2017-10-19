@@ -189,5 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickups:
-  - prefab: {fileID: 0}
+  - prefab: {fileID: 1736514985979124, guid: adf625e944a0c2546af5805b0f1871ec, type: 2}
     dropChance: 0.3
+  disableDrops: 0

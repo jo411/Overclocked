@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114329794547452052}
   - component: {fileID: 54734441169009032}
   - component: {fileID: 114875329200596316}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: WarpBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}

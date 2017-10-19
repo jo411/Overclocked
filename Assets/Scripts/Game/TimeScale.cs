@@ -8,7 +8,7 @@ public class TimeScale : MonoBehaviour {
 
     private float fromPitch = 1f, targetPitch = 1f;
     private float fromGroupPitch = 1f, targetGroupPitch = 1f;
-    private float pitchLerp = 0f, groupPitchLerp = 0f;
+    private float lerp = 0f;
 
     private float scale = 1f;
     [SerializeField]
@@ -19,12 +19,12 @@ public class TimeScale : MonoBehaviour {
     private float[] musicScaleValues;
     [SerializeField]
     private AudioSource music;
-    [SerializeField]
-    private AudioClip slowClip;
-    [SerializeField]
-    private AudioClip accelerateClip;
-    [SerializeField]
-    private AudioSource soundEffects;
+    //[SerializeField]
+    //private AudioClip slowClip;
+    //[SerializeField]
+    //private AudioClip accelerateClip;
+    //[SerializeField]
+    //private AudioSource soundEffects;
 
     private List<GameObject> listeners = new List<GameObject>();
 
@@ -37,23 +37,22 @@ public class TimeScale : MonoBehaviour {
         {
             music = GameObject.Find("Music").GetComponentInChildren<AudioSource>();
         }
-        soundEffects = GetComponentInChildren<AudioSource>();
+        //soundEffects = GetComponentInChildren<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        lerp += Time.deltaTime / transitionTime;
 	    if (music.pitch != targetPitch)
         {
-            pitchLerp += Time.deltaTime / transitionTime;
-            music.pitch = Mathf.Lerp(fromPitch, targetPitch, pitchLerp);
+            music.pitch = Mathf.Lerp(fromPitch, targetPitch, lerp);
         }
         float groupPitch;
         music.outputAudioMixerGroup.audioMixer.GetFloat("MusicPitchShift", out groupPitch);
         if (groupPitch != targetGroupPitch)
         {
-            groupPitchLerp += Time.deltaTime / transitionTime;
-            music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", Mathf.Lerp(fromGroupPitch, targetGroupPitch, groupPitchLerp));
+            music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", Mathf.Lerp(fromGroupPitch, targetGroupPitch, lerp));
         }
 	}
 
@@ -112,11 +111,8 @@ public class TimeScale : MonoBehaviour {
 
     private void updatePitch()
     {
-        //music.pitch = musicScaleValues[index];
-        //music.outputAudioMixerGroup.audioMixer.SetFloat("MusicPitchShift", musicScaleValues[6 - index]);
         //Reset lerp variables
-        pitchLerp = 0f;
-        groupPitchLerp = 0f;
+        lerp = 0f;
         //Reset from and to values
         fromPitch = music.pitch;
         targetPitch = musicScaleValues[index];

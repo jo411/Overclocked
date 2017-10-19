@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 
-    public int[] layers;
+    // Editing this in the physics collision engine for now. If we ever want enemies to be able to get pickups, we may need to add this back in...
+    //public int[] layers;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,11 +21,11 @@ public class PickUp : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        if (layers.Contains<int>(c.gameObject.layer))
-        {
-            ApplyEffect(c.gameObject);
-            Destroy(this.gameObject);
-        }
+        //if (layers.Contains<int>(c.gameObject.layer))
+        //{
+        //}
+        ApplyEffect(c.gameObject);
+        Destroy(this.gameObject);
     }
 
     protected virtual void ApplyEffect(GameObject target) {}

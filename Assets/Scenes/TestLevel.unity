@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2997,9 +2997,6 @@ MonoBehaviour:
   - 1.4
   - 1.6
   music: {fileID: 1033393645}
-  slowClip: {fileID: 8300000, guid: 2ac7c9441c80f1c4a9a92b000846fd7b, type: 3}
-  accelerateClip: {fileID: 8300000, guid: 12b3da443d4fe654294bd32bf079d4b7, type: 3}
-  soundEffects: {fileID: 0}
 --- !u!4 &1498269786
 Transform:
   m_ObjectHideFlags: 0

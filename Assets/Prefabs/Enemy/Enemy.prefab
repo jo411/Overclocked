@@ -169,7 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickups: []
+  pickups:
+  - prefab: {fileID: 1736514985979124, guid: adf625e944a0c2546af5805b0f1871ec, type: 2}
+    dropChance: 0.3
+  disableDrops: 0
 --- !u!114 &114998969755051020
 MonoBehaviour:
   m_ObjectHideFlags: 1

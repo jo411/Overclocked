@@ -6,13 +6,14 @@ using System.Linq;
 [System.Serializable]
 public class pickupRecord
 {
-    public PickUp prefab;
+    public GameObject prefab;
     public float dropChance;
 }
 
 public class DropPickupOnDestroy : MonoBehaviour {
 
     public pickupRecord[] pickups;
+    public bool disableDrops = false;
     	// Use this for initialization
 	void Start () {
         pickups = pickups.OrderBy(x => x.dropChance).ToArray();
@@ -24,17 +25,24 @@ public class DropPickupOnDestroy : MonoBehaviour {
 		
 	}
 
+    private void OnApplicationQuit()
+    {
+        disableDrops = true;
+    }
+
     void OnDestroy()
     {
-        foreach(pickupRecord current in pickups)
+        if (!disableDrops)
         {
-            if(Utils.checkProbability(current.dropChance))
+            foreach(pickupRecord current in pickups)
             {
-                PickUp pickup = Instantiate(current.prefab);//drop pickup
-                pickup.transform.position = transform.position;//set location to this game object's position
-                break;//if an object spawned then stop checking
-            }
+                if(Utils.checkProbability(current.dropChance))
+                {
+                    GameObject pickup = Instantiate(current.prefab, transform.position, Quaternion.identity);//drop pickup
+                    break;//if an object spawned then stop checking
+                }
 
+            }
         }
     }
     

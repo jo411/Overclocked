@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 54824450391204244}
   - component: {fileID: 114409637713076312}
   - component: {fileID: 114281101155488112}
-  - component: {fileID: 114417563647392398}
   - component: {fileID: 114364883583084436}
   m_Layer: 8
   m_Name: WarpTeleportEnemy
@@ -168,7 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickups: []
+  pickups:
+  - prefab: {fileID: 1736514985979124, guid: adf625e944a0c2546af5805b0f1871ec, type: 2}
+    dropChance: 0.3
+  disableDrops: 0
 --- !u!114 &114390136310840526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,15 +207,3 @@ MonoBehaviour:
   rotateSpeed: 0
   tpRadius: 8
   tpDelay: 3
---- !u!114 &114417563647392398
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1444831496247624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aced440cc06d4f47b3149b1f8bad515, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickups: []

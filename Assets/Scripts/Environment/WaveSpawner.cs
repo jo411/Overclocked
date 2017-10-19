@@ -105,12 +105,21 @@ public class WaveSpawner : MonoBehaviour {
         {
             if (enemyTracker[i] != null)
             {
+                DropPickupOnDestroy[] dpod = enemyTracker[i].GetComponentsInChildren<DropPickupOnDestroy>();
+                foreach(DropPickupOnDestroy dp in dpod)
+                {
+                    dp.disableDrops = true;
+                }
                 Destroy(enemyTracker[i].gameObject);
             }
         }
         foreach (Bullet b in GameObject.FindObjectsOfType<Bullet>())
         {
             Destroy(b.gameObject);
+        }
+        foreach (PickUp p in GameObject.FindObjectsOfType<PickUp>())
+        {
+            Destroy(p.gameObject);
         }
     }
 }

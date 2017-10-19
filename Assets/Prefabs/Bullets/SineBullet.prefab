@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23515840723068692}
   - component: {fileID: 54734441169009032}
   - component: {fileID: 114557618019994152}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: SineBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -112,7 +112,8 @@ MonoBehaviour:
   personalTimeScale: 1
   damage: 200
   bulletSpeedOverride: 0
-  omega: 1
+  swapDelayFrames: 5
+  frameCount: 0
 --- !u!135 &135260607710404954
 SphereCollider:
   m_ObjectHideFlags: 1
