@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 originPoint;
     private ScytheAttack scytheAttack;
+    private Rigidbody rb;
 
     // Use this for initialization
     void Start() {
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour {
         timeScale.addListener(gameObject);
         originPoint = transform.position;
         scytheAttack = GetComponentInChildren<ScytheAttack>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,8 @@ public class PlayerController : MonoBehaviour {
     private void readInput()
     {
         //Movement
-
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
         /* Joystick Inputs */
         if (Input.GetAxis("Horizontal Stick") != 0)
         {
